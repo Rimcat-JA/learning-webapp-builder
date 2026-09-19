@@ -1,0 +1,13 @@
+{
+  "name": "python360-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node tests/core.test.mjs && node tests/local-server.test.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.51.1"
+  }
+}

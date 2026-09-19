@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0",
+  "dryRun": true,
+  "status": "ready",
+  "courseId": "objective-demo",
+  "fromVersion": "1.0.0",
+  "toVersion": "1.0.0",
+  "progressProvided": true,
+  "scope": "Supplied course snapshots and supplied progress export only; unprovided records are not certified.",
+  "mappings": [
+    {
+      "from": "q-single",
+      "to": "q-single",
+      "fromVersion": "1.0.0",
+      "toVersion": "1.0.0",
+      "kind": "identity"
+    },
+    {
+      "from": "q-multiple",
+      "to": "q-multiple",
+      "fromVersion": "1.0.0",
+      "toVersion": "1.0.0",
+      "kind": "identity"
+    },
+    {
+      "from": "q-numeric",
+      "to": "q-numeric",
+      "fromVersion": "1.0.0",
+      "toVersion": "1.0.0",
+      "kind": "identity"
+    },
+    {
+      "from": "q-cloze",
+      "to": "q-cloze",
+      "fromVersion": "1.0.0",
+      "toVersion": "1.0.0",
+      "kind": "identity"
+    },
+    {
+      "from": "q-order",
+      "to": "q-order",
+      "fromVersion": "1.0.0",
+      "toVersion": "1.0.0",
+      "kind": "identity"
+    },
+    {
+      "from": "q-match",
+      "to": "q-match",
+      "fromVersion": "1.0.0",
+      "toVersion": "1.0.0",
+      "kind": "identity"
+    },
+    {
+      "from": "q-provisional",
+      "to": "q-provisional",
+      "fromVersion": "1.0.0",
+      "toVersion": "1.0.0",
+      "kind": "identity"
+    },
+    {
+      "from": "q-pending",
+      "to": "q-pending",
+      "fromVersion": "1.0.0",
+      "toVersion": "1.0.0",
+      "kind": "identity"
+    }
+  ],
+  "changes": [],
+  "retainedAttemptIds": [
+    "attempt-1",
+    "attempt-2",
+    "attempt-3"
+  ],
+  "blockedReasons": [],
+  "historyPolicy": {
+    "mode": "append-only",
+    "rewriteExistingAttempts": false,
+    "regradeExistingAttempts": false,
+    "preserveOriginalAttemptFields": "all fields, including IDs, answers, scores, revisions, mode, and timestamps",
+    "questionReferenceResolution": "Use the versioned mapping; never overwrite original questionId or questionRevision.",
+    "archivalRequirement": "Retain the old course snapshot and available older snapshots so past answers can be interpreted.",
+    "changedQuestionProgress": "Keep earlier attempts visible as history; do not count old revisions as mastery of a revised question.",
+    "newAttempts": "Append new attempt IDs using the current course version and question revision.",
+    "unprovidedProgress": "If progress was omitted, validate each saved export before applying any migration."
+  },
+  "writesPerformed": []
+}

@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "1.0",
+  "id": "objective-demo",
+  "version": "1.0.0",
+  "title": "6形式の採点契約サンプル",
+  "audience": "AIスキルの利用者・アプリ実装者",
+  "prerequisites": [
+    "四則演算と図形の基本用語"
+  ],
+  "goals": [
+    "6つの客観式問題形式を確認する",
+    "確定・暫定・採点保留の違いを確認する"
+  ],
+  "estimatedMinutes": 10,
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "入力形式を試す",
+      "lesson": "これは教材全体ではなく、実装検証用の小さな契約サンプルです。",
+      "references": [
+        "問題文内で必要な数値・定義を示しています。"
+      ],
+      "questionIds": [
+        "q-single",
+        "q-multiple",
+        "q-numeric",
+        "q-cloze",
+        "q-order",
+        "q-match",
+        "q-provisional",
+        "q-pending"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-single",
+      "revision": 1,
+      "chapterId": "chapter-1",
+      "difficulty": 1,
+      "type": "single_choice",
+      "prompt": "箱Aに赤い玉が2個、青い玉が1個あります。赤い玉はいくつですか？",
+      "answer": "opt-b",
+      "explanation": {
+        "summary": "赤い玉は2個です。",
+        "correctReason": "問題文の「赤い玉が2個」をそのまま読み取ります。"
+      },
+      "verification": {
+        "status": "verified",
+        "reason": "同梱サンプルの定義と計算で確認",
+        "evidence": [
+          "examples/course.json の明示された条件・定義に基づく手計算"
+        ]
+      },
+      "options": [
+        {
+          "id": "opt-a",
+          "text": "1個",
+          "explanation": "1個は青い玉の数です。"
+        },
+        {
+          "id": "opt-b",
+          "text": "2個",
+          "explanation": "赤い玉の数は2個と明記されています。"
+        },
+        {
+          "id": "opt-c",
+          "text": "3個",
+          "explanation": "3個は赤と青を合わせた数です。"
+        }
+      ]
+    },
+    {
+      "id": "q-multiple",
+      "revision": 1,
+      "chapterId": "chapter-1",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "prompt": "2で割り切れる整数をすべて選んでください。",
+      "answer": [
+        "n-2",
+        "n-4"
+      ],
+      "explanation": {
+        "summary": "2と4が該当します。",
+        "correctReason": "2÷2=1、4÷2=2で余りは0です。"
+      },
+      "verification": {
+        "status": "verified",
+        "reason": "同梱サンプルの定義と計算で確認",
+        "evidence": [
+          "examples/course.json の明示された条件・定義に基づく手計算"
+        ]
+      },
+      "options": [
+        {
+          "id": "n-2",
+          "text": "2",
+          "explanation": "2で割ると1で余りは0です。"
+        },
+        {
+          "id": "n-3",
+          "text": "3",
+          "explanation": "2で割ると余りは1です。"
+        },
+        {
+          "id": "n-4",
+          "text": "4",
+          "explanation": "2で割ると2で余りは0です。"
+        }
+      ]
+    },
+    {
+      "id": "q-numeric",
+      "revision": 1,
+      "chapterId": "chapter-1",
+      "difficulty": 3,
+      "type": "numeric",
+      "prompt": "1冊120円のノートを3冊買います。合計は何円ですか？ 数値だけ入力してください。",
+      "answer": "360",
+      "explanation": {
+        "summary": "合計は360円です。",
+        "correctReason": "120×3=360です。"
+      },
+      "verification": {
+        "status": "verified",
+        "reason": "同梱サンプルの定義と計算で確認",
+        "evidence": [
+          "examples/course.json の明示された条件・定義に基づく手計算"
+        ]
+      },
+      "scoring": {
+        "absoluteTolerance": "0",
+        "relativeTolerance": "0"
+      }
+    },
+    {
+      "id": "q-cloze",
+      "revision": 1,
+      "chapterId": "chapter-1",
+      "difficulty": 3,
+      "type": "cloze_select",
+      "prompt": "長方形の面積は「たて □ よこ」です。記号を選んでください。",
+      "answer": {
+        "operation": "multiply"
+      },
+      "explanation": {
+        "summary": "たてとよこを掛けます。",
+        "correctReason": "各行の個数と行数を掛けることで面積が求まります。"
+      },
+      "verification": {
+        "status": "verified",
+        "reason": "同梱サンプルの定義と計算で確認",
+        "evidence": [
+          "examples/course.json の明示された条件・定義に基づく手計算"
+        ]
+      },
+      "slots": [
+        {
+          "id": "operation",
+          "label": "演算記号",
+          "options": [
+            {
+              "id": "add",
+              "text": "＋",
+              "explanation": "足し算では長方形の面積になりません。"
+            },
+            {
+              "id": "multiply",
+              "text": "×",
+              "explanation": "たて×よこで面積を求めます。"
+            }
+          ]
+        }
+      ],
+      "hint": {
+        "text": "同じ長さの行が何行あるかを考えましょう。",
+        "rationale": "足し算から掛け算への概念移行を補助するため、この問題だけに用意します。",
+        "trigger": "on_request"
+      }
+    },
+    {
+      "id": "q-order",
+      "revision": 1,
+      "chapterId": "chapter-1",
+      "difficulty": 4,
+      "type": "ordering",
+      "prompt": "次の分数を小さい順に並べてください。",
+      "answer": [
+        "third",
+        "half",
+        "whole"
+      ],
+      "explanation": {
+        "summary": "1/3、1/2、1の順です。",
+        "correctReason": "6を共通分母にすると2/6、3/6、6/6です。"
+      },
+      "verification": {
+        "status": "verified",
+        "reason": "同梱サンプルの定義と計算で確認",
+        "evidence": [
+          "examples/course.json の明示された条件・定義に基づく手計算"
+        ]
+      },
+      "options": [
+        {
+          "id": "half",
+          "text": "1/2",
+          "explanation": "3/6なので1/3より大きく1より小さいです。"
+        },
+        {
+          "id": "whole",
+          "text": "1",
+          "explanation": "6/6で最も大きい値です。"
+        },
+        {
+          "id": "third",
+          "text": "1/3",
+          "explanation": "2/6で最も小さい値です。"
+        }
+      ]
+    },
+    {
+      "id": "q-match",
+      "revision": 1,
+      "chapterId": "chapter-1",
+      "difficulty": 4,
+      "type": "matching",
+      "prompt": "各図形と辺の数を対応させてください。",
+      "answer": {
+        "triangle": "three",
+        "quadrilateral": "four"
+      },
+      "explanation": {
+        "summary": "三角形は3辺、四角形は4辺です。",
+        "correctReason": "三角形・四角形を、それぞれ3本・4本の辺からなる図形と定義します。"
+      },
+      "verification": {
+        "status": "verified",
+        "reason": "同梱サンプルの定義と計算で確認",
+        "evidence": [
+          "examples/course.json の明示された条件・定義に基づく手計算"
+        ]
+      },
+      "items": [
+        {
+          "id": "triangle",
+          "text": "三角形"
+        },
+        {
+          "id": "quadrilateral",
+          "text": "四角形"
+        }
+      ],
+      "options": [
+        {
+          "id": "three",
+          "text": "3",
+          "explanation": "三角形の辺の数です。"
+        },
+        {
+          "id": "four",
+          "text": "4",
+          "explanation": "四角形の辺の数です。"
+        }
+      ]
+    },
+    {
+      "id": "q-provisional",
+      "revision": 1,
+      "chapterId": "chapter-1",
+      "difficulty": 5,
+      "type": "numeric",
+      "prompt": "資料の転記例：ある表の「12」と「8」を合計してください。原資料との照合はまだ済んでいません。",
+      "answer": "20",
+      "explanation": {
+        "summary": "転記された数値では20になります（暫定）。",
+        "correctReason": "12+8=20ですが、元の数値の照合が未完了です。"
+      },
+      "verification": {
+        "status": "unverified",
+        "reason": "転記数値を原資料と照合できていません。",
+        "evidence": []
+      },
+      "scoring": {
+        "absoluteTolerance": "0",
+        "relativeTolerance": "0"
+      }
+    },
+    {
+      "id": "q-pending",
+      "revision": 1,
+      "chapterId": "chapter-1",
+      "difficulty": 5,
+      "type": "single_choice",
+      "prompt": "照合待ち資料の系列Xが増加したかを選んでください。元の表が欠けているため正答は保留中です。",
+      "explanation": {
+        "summary": "元資料との照合が必要です。",
+        "correctReason": "参照表が不足しているため、正答を確定できません。"
+      },
+      "verification": {
+        "status": "unverified",
+        "reason": "元資料が欠けています。",
+        "evidence": []
+      },
+      "options": [
+        {
+          "id": "up",
+          "text": "増加",
+          "explanation": "元資料の値が確認できず、この選択肢の正否は未確定です。"
+        },
+        {
+          "id": "down",
+          "text": "減少",
+          "explanation": "元資料の値が確認できず、この選択肢の正否は未確定です。"
+        }
+      ]
+    }
+  ]
+}

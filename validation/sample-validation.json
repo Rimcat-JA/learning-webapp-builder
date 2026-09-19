@@ -1,0 +1,14 @@
+{
+  "valid": true,
+  "errors": [],
+  "warnings": [
+    "questions[6]: unverified; exclude from confirmed mastery and confirmed mock scores",
+    "questions[7]: unverified; exclude from confirmed mastery and confirmed mock scores"
+  ],
+  "questionCount": 8,
+  "progress": {
+    "valid": true,
+    "errors": [],
+    "warnings": []
+  }
+}

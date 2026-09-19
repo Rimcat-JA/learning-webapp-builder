@@ -1,0 +1,13 @@
+{
+  "questionId": "q-single",
+  "questionRevision": 1,
+  "status": "graded",
+  "correct": true,
+  "countsTowardMastery": true,
+  "feedback": {
+    "summary": "赤い玉は2個です。",
+    "correctReason": "問題文の「赤い玉が2個」をそのまま読み取ります。"
+  },
+  "errors": [],
+  "expectedAnswer": "opt-b"
+}

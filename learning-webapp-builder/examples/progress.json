@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "courseId": "objective-demo",
+  "courseVersion": "1.0.0",
+  "learners": [
+    {
+      "id": "learner-local-1",
+      "displayName": "サンプル学習者"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "attempt-1",
+      "learnerId": "learner-local-1",
+      "questionId": "q-single",
+      "questionRevision": 1,
+      "answer": "opt-b",
+      "correct": true,
+      "status": "graded",
+      "countsTowardMastery": true,
+      "at": "2026-01-01T10:00:00Z",
+      "mode": "practice"
+    },
+    {
+      "id": "attempt-2",
+      "learnerId": "learner-local-1",
+      "questionId": "q-provisional",
+      "questionRevision": 1,
+      "answer": "20",
+      "correct": true,
+      "status": "provisional",
+      "countsTowardMastery": false,
+      "at": "2026-01-01T10:01:00Z",
+      "mode": "practice"
+    },
+    {
+      "id": "attempt-3",
+      "learnerId": "learner-local-1",
+      "questionId": "q-pending",
+      "questionRevision": 1,
+      "answer": "up",
+      "correct": null,
+      "status": "pending",
+      "countsTowardMastery": false,
+      "at": "2026-01-01T10:02:00Z",
+      "mode": "practice"
+    }
+  ],
+  "bookmarks": [
+    {
+      "learnerId": "learner-local-1",
+      "questionId": "q-pending"
+    }
+  ]
+}

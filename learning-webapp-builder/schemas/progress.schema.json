@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:learning-webapp-builder:progress:1.0",
+  "title": "Append-only learning progress 1.0",
+  "description": "Validate against the target course with course_tools.py. Historical revisions are retained and never silently regraded. Learner records are not authentication credentials.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "courseId",
+    "courseVersion",
+    "learners",
+    "attempts",
+    "bookmarks"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "courseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "courseVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "learners": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "learnerId",
+          "questionId",
+          "questionRevision",
+          "answer",
+          "correct",
+          "at",
+          "mode",
+          "status",
+          "countsTowardMastery"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "learnerId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "questionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "questionRevision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "answer": {},
+          "correct": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+          },
+          "mode": {
+            "enum": [
+              "practice",
+              "review",
+              "mock"
+            ]
+          },
+          "status": {
+            "enum": [
+              "graded",
+              "provisional",
+              "pending"
+            ]
+          },
+          "countsTowardMastery": {
+            "type": "boolean"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "pending"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "correct": {
+                  "type": "null"
+                },
+                "countsTowardMastery": {
+                  "const": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "provisional"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "correct": {
+                  "type": "boolean"
+                },
+                "countsTowardMastery": {
+                  "const": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "graded"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "correct": {
+                  "type": "boolean"
+                },
+                "countsTowardMastery": {
+                  "const": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "bookmarks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "learnerId",
+          "questionId"
+        ],
+        "properties": {
+          "learnerId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "questionId": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
